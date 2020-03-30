@@ -10,7 +10,6 @@ git commit -m "First commit."
 git push -u origin master
 
 
-
 删除本地文件后，想从远程仓库中从新Pull最新版文件。
 
 Git提示：up-to-date，但未得到删除的文件
