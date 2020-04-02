@@ -18,6 +18,7 @@ const (
 
 // 工程属性
 type VsProj struct {
+	Atom	  bool
 	Projname  string
 	Buildflag string
 	Env1      string
@@ -27,16 +28,23 @@ type VsProj struct {
 /////////////////////////////////////////////////////////////////////////////
 func main() {
 	var vsproj VsProj
-	vsproj.Projname = "lbm_kamc"
-	vsproj.Buildflag = "/rebuild"
-	vsproj.Env1 = "oracle_debug"
+	vsproj.Atom = true
+	vsproj.Projname = "atom_kpms_risk"
+	vsproj.Buildflag = "/build"
+	vsproj.Env1 = "oracle_release"
 	vsproj.Env2 = "x64"
 
 	CallCmdExec(vsproj)
 }
 
 func CallCmdExec(vsproj VsProj) {
-	cmd := exec.Command("devenv.com", "D:\\szkingdom\\code\\citicsol\\src\\lbm\\"+vsproj.Projname+"\\"+vsproj.Projname+".vcproj", vsproj.Buildflag, vsproj.Env1+"|"+vsproj.Env2, "/Out")
+	var strExtr string
+	if vsproj.Atom {
+		strExtr = "atom\\"
+	}else{
+		strExtr = ""	
+	}
+	cmd := exec.Command("devenv.com", "D:\\codes\\citicsOL_patch\\src\\lbm\\"+ strExtr + vsproj.Projname+"\\"+vsproj.Projname+".vcproj", vsproj.Buildflag, vsproj.Env1+"|"+vsproj.Env2, "/Out")
 	//显示运行的命令
 	fmt.Println(cmd.Args)
 
@@ -57,7 +65,7 @@ func CallCmdExec(vsproj VsProj) {
 		if err2 != nil || io.EOF == err2 {
 			break
 		}
-		fmt.Println(ConvertByte2String([]byte(line), "GB18030"))
+		fmt.Print(ConvertByte2String([]byte(line), "GB18030"))
 	}
 
 	cmd.Wait()
