@@ -18,7 +18,7 @@ const (
 
 // 工程属性
 type VsProj struct {
-	Atom	  bool
+	Atom      bool
 	Projname  string
 	Buildflag string
 	Env1      string
@@ -28,8 +28,8 @@ type VsProj struct {
 /////////////////////////////////////////////////////////////////////////////
 func main() {
 	var vsproj VsProj
-	vsproj.Atom = true
-	vsproj.Projname = "atom_kpms_risk"
+	vsproj.Atom = false
+	vsproj.Projname = "lbm_kamc"
 	vsproj.Buildflag = "/build"
 	vsproj.Env1 = "oracle_release"
 	vsproj.Env2 = "x64"
@@ -41,10 +41,10 @@ func CallCmdExec(vsproj VsProj) {
 	var strExtr string
 	if vsproj.Atom {
 		strExtr = "atom\\"
-	}else{
-		strExtr = ""	
+	} else {
+		strExtr = ""
 	}
-	cmd := exec.Command("devenv.com", "D:\\codes\\citicsOL_patch\\src\\lbm\\"+ strExtr + vsproj.Projname+"\\"+vsproj.Projname+".vcproj", vsproj.Buildflag, vsproj.Env1+"|"+vsproj.Env2, "/Out")
+	cmd := exec.Command("devenv.com", "D:\\szkingdom\\code\\citicsOL_patch\\src\\lbm\\"+strExtr+vsproj.Projname+"\\"+vsproj.Projname+".vcproj", vsproj.Buildflag, vsproj.Env1+"|"+vsproj.Env2, "/Out")
 	//显示运行的命令
 	fmt.Println(cmd.Args)
 
