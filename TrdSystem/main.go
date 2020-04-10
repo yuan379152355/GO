@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"public"
+	//"GO/TrdSystem/public"
+	tspublic "./public"
 )
 
 func main() {
@@ -13,7 +14,6 @@ func main() {
 	if !sYBase.SYDatabase.Init() {
 		fmt.Println("open mysql failed!")
 	}
-
 
 	//
 
