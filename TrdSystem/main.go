@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	//"GO/TrdSystem/public"
-	tspublic "./public"
+	tspublic "TrdSystem/public"
 )
 
 func main() {
@@ -14,8 +14,6 @@ func main() {
 	if !sYBase.SYDatabase.Init() {
 		fmt.Println("open mysql failed!")
 	}
-
-	//
 
 	result, err := sYBase.SYDatabase.Db.Exec("INSERT INTO my_use (userid,username,password) VALUES (1002,'yuanshuai','123456')")
 	if err != nil {

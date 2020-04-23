@@ -2,7 +2,7 @@ package tables
 
 import (
 	//此处注意“_”表示引用mysql函数中init的方法而无需使用函数
-	. "./public"
+	. "TrdSystem/public"
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -23,5 +23,5 @@ func NewSY_user(sYBase SYBase) *SY_user {
 }
 
 func Insert() {
-	ySql := NewSYSql(sYBase SYBase)
+	//ySql := NewSYSql(sYBase SYBase)
 }
